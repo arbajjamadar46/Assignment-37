@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Meet</title>
+    <style>
+        h1{
+            text-align: center;
+            font-size: 40px;
+            font-weight: bold;
+            color: #595d60;
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #9AA0A6;
+            padding: 20px;
+            margin: 20px;
+            border-radius: 10px;
+            background-color: #4285F4;
+        }
+        .student-card{
+            border: 1px solid #9AA0A6;
+            padding: 10px;
+            margin: 8px;
+            border-radius: 5px;
+            background-color: white;
+            width: 250px;
+            font-size: 25px;
+        }
+        #search{
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #9AA0A6;
+            width: 350px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🎧<font color="#4285F4">G</font
+        ><font color="#EA4335">o</font
+        ><font color="#FBBC05">o</font
+        ><font color="#4285F4">g</font
+        ><font color="#34A853">l</font
+        ><font color="#EA4335">e</font> Meet🎙️</h1>
+    <div class="container">
+        <input type="text" id="search" placeholder="Enter Name..." onkeyup="search()">
+        <div id="student-list"></div>
+    </div>
+
+    <script>
+        const Students = [
+            "Arbaj",
+            "Balaji",
+            "Prathmesh",
+            "Rushi",
+            "Swapnil",
+            "Parvej",
+            "Achyut",
+            "Akshay",
+            "Soham",
+            "Sanket"
+        ]
+        const studentList = document.getElementById("student-list");
+
+        Students.forEach((stud)=>{
+            studentList.innerHTML += `<div class="student-card"><img src="user.png" alt="user" width="25px" height="25px"> ${stud}</div>`;
+        })
+
+        function search(){
+            studentList.innerHTML = "";
+            const searchValue = document.getElementById("search").value.toLowerCase();
+
+            const filteredStudents = Students.filter((stud)=>{
+                if(stud.toLowerCase().includes(searchValue)){
+                    return stud;
+                }
+            })
+
+            filteredStudents.forEach((stud)=>{
+                studentList.innerHTML += `<div class="student-card"><img src="user.png" alt="user" width="25px" height="25px"> ${stud}</div>`;
+            })
+        }
+    </script>
+
+</body>
+
+</html>
